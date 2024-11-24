@@ -40,6 +40,10 @@ namespace RenderMastery
         }
 
         [SettingsUISection(kBasicTab, kBasicGroup)]
+        [SettingsUIMultilineText("https://raw.githubusercontent.com/NyokoDev/LuminaCS2/refs/heads/master/HTTP/Lumina.svg")]
+        public string LuminaByNyoko => string.Empty;
+
+        [SettingsUISection(kBasicTab, kBasicGroup)]
         public bool UseRenderMastery
         {
             get => GlobalVariables.Instance.UseRenderMastery;
