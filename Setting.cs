@@ -24,7 +24,7 @@ namespace RenderMastery
     public class Setting : ModSetting
     {
         public const string kSection = "Main";
-
+        public string SettingsPath = GlobalVariables.SettingsPath();
         public const string kButtonGroup = "Button";
         public const string kToggleGroup = "Toggle";
         public const string kSliderGroup = "Slider";
@@ -39,7 +39,13 @@ namespace RenderMastery
 
         }
 
- 
+        [SettingsUISection(kBasicTab, kBasicGroup)]
+        public bool UseRenderMastery
+        {
+            get => GlobalVariables.Instance.UseRenderMastery;
+            set => GlobalVariables.Instance.UseRenderMastery = value;
+        }
+
 
         [SettingsUISlider(min = -100, max = 300, step = 1, scalarMultiplier = 1, unit = Unit.kInteger)]
         [SettingsUISection(kSection, kSliderGroup)]
@@ -254,11 +260,7 @@ namespace RenderMastery
                     property.SetValue(this, 1);
                 }
                 Mod.log.Info("Settings reset to default.");
-                string localLowDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                localLowDirectory = Path.Combine(localLowDirectory, "..", "LocalLow");
-                string assemblyDirectory = Path.Combine(localLowDirectory, "Colossal Order", "Cities Skylines II", "Mods", "RenderMastery");
-                string settingsFilePath = Path.Combine(assemblyDirectory, "RenderMastery.xml");
-                GlobalVariables.SaveToFile(settingsFilePath);
+                GlobalVariables.SaveToFile(SettingsPath);
             }
         
     }
@@ -266,16 +268,7 @@ namespace RenderMastery
     public override void Apply()
         {
             base.Apply();
-            string localLowDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            localLowDirectory = Path.Combine(localLowDirectory, "..", "LocalLow");
-            string assemblyDirectory = Path.Combine(localLowDirectory, "Colossal Order", "Cities Skylines II", "Mods", "RenderMastery");
-            string settingsFilePath = Path.Combine(assemblyDirectory, "RenderMastery.xml");
-
-            GlobalVariables.SaveToFile(settingsFilePath);
-
-            RenderingSystem renderingSystem = World.DefaultGameObjectInjectionWorld?.GetExistingSystemManaged<RenderingSystem>();
-            renderingSystem.levelOfDetail = GlobalVariables.Instance.levelOfDetail;
-            Mod.log.Info("Level of Detail set to" + levelOfDetail.ToString());
+            GlobalVariables.SaveToFile(SettingsPath);
         }
 
 

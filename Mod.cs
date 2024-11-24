@@ -9,6 +9,7 @@ using RenderMastery.Locale;
 using RenderMastery.Systems;
 using System.IO;
 using System;
+using Game.Settings;
 
 namespace RenderMastery
 {
@@ -16,6 +17,7 @@ namespace RenderMastery
     {
         public static ILog log = LogManager.GetLogger($"{nameof(RenderMastery)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
         private Setting m_Setting;
+        private string SettingsPath = GlobalVariables.SettingsPath();
 
         public void OnLoad(UpdateSystem updateSystem)
         {
@@ -39,13 +41,10 @@ namespace RenderMastery
 
 
 
-            string localLowDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            localLowDirectory = Path.Combine(localLowDirectory, "..", "LocalLow");
-            string assemblyDirectory = Path.Combine(localLowDirectory, "Colossal Order", "Cities Skylines II", "Mods", "RenderMastery");
-            string settingsFilePath = Path.Combine(assemblyDirectory, "RenderMastery.xml");
+
 
 //            AssetDatabase.global.LoadSettings(nameof(RenderMastery), m_Setting, new Setting(this));  Prevent settings from loading and override with our own.
-            GlobalVariables.LoadFromFile(settingsFilePath);
+            GlobalVariables.LoadFromFile(SettingsPath);
         }
 
         public void OnDispose()

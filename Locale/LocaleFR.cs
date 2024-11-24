@@ -40,11 +40,17 @@ namespace RenderMastery.Locale
                 { m_Setting.GetOptionTabLocaleID(Setting.kSection), "Maîtrise du Rendu" },
                 { m_Setting.GetOptionTabLocaleID(Setting.kBasicTab), "Onglet de Base" },
 
+ 
+  // Use Render Mastery
+{ m_Setting.GetOptionLabelLocaleID(nameof(Setting.UseRenderMastery)), "Activer Render Mastery" },
+{ m_Setting.GetOptionDescLocaleID(nameof(Setting.UseRenderMastery)), "Activer ou désactiver Render Mastery. Vous devez l'activer pour utiliser le reste des fonctions." },
+
+
                 { m_Setting.GetOptionGroupLocaleID(Setting.kButtonGroup), "Maîtrise du Rendu" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.kToggleGroup), "Maîtrise du Rendu" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.kSliderGroup), "Maîtrise du Rendu" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.kDropdownGroup), "Maîtrise du Rendu" },
-                { m_Setting.GetOptionGroupLocaleID(Setting.kBasicGroup), "Paramètres de Base"  },
+                { m_Setting.GetOptionGroupLocaleID(Setting.kBasicGroup), "RENDER MASTERY"  },
 
                 // Bouton
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.Button)), "Bouton" },

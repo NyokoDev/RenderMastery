@@ -44,12 +44,16 @@ namespace RenderMastery.Locale
                 { m_Setting.GetOptionGroupLocaleID(Setting.kToggleGroup), "Render Mastery" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.kSliderGroup), "Render Mastery" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.kDropdownGroup), "Render Mastery" },
-                { m_Setting.GetOptionGroupLocaleID(Setting.kBasicGroup), "Configuraciones Básicas"  },
+                          { m_Setting.GetOptionGroupLocaleID(Setting.kBasicGroup), "RENDER MASTERY"  },
 
                 // Botón
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.Button)), "Botón" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.Button)), $"Un simple botón único. Debe ser una propiedad booleana con solo un setter o use [{nameof(SettingsUIButtonAttribute)}] para crear un botón a partir de una propiedad booleana con ambos getter y setter." },
 
+
+                // Use Render Mastery
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.UseRenderMastery)), "Activar Render Mastery" },
+                { m_Setting.GetOptionDescLocaleID(nameof(Setting.UseRenderMastery)), "Activar o desactivar Render Mastery. Tiene que estar activada para el funcionamiento del resto de las funciones." },
 
                 // Escala de Resolución Dinámica Adaptativa
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.AdaptiveDynamicResolutionScale)), "Escala de Resolución Dinámica Adaptativa" },

@@ -42,7 +42,11 @@ namespace RenderMastery.Systems
                 Console.WriteLine("[Critical] CurrentScaleFraction not found.");
             }
 
-            QualitySettings.SetQualityLevel(GlobalVariables.Instance.GlobalQualityLevel, true); // Set to the lowest quality level
+            if (GlobalVariables.Instance.UseRenderMastery) {
+
+                RenderingSystem renderingSystem = World.DefaultGameObjectInjectionWorld?.GetExistingSystemManaged<RenderingSystem>();
+                renderingSystem.levelOfDetail = GlobalVariables.Instance.levelOfDetail;
+                QualitySettings.SetQualityLevel(GlobalVariables.Instance.GlobalQualityLevel, true); 
             QualitySettings.globalTextureMipmapLimit = GlobalVariables.Instance.GlobalTextureMipmapLimit; // Reduces texture quality to minimum
             QualitySettings.shadows = ShadowQuality.Disable; // Disable shadows
             QualitySettings.shadowResolution = ShadowResolution.Low; // Set shadow resolution to low
@@ -63,7 +67,7 @@ namespace RenderMastery.Systems
             QualitySettings.terrainTreeDistance = GlobalVariables.Instance.terrainTreeDistance;
             QualitySettings.terrainBillboardStart = GlobalVariables.Instance.terrainBillboardStart;
             QualitySettings.terrainFadeLength = GlobalVariables.Instance.terrainFadeLength;
-
+            }
 
 
         }

@@ -44,12 +44,17 @@ namespace RenderMastery.Locale
                 { m_Setting.GetOptionGroupLocaleID(Setting.kToggleGroup), "Render Mastery" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.kSliderGroup), "Render Mastery" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.kDropdownGroup), "Render Mastery" },
-                { m_Setting.GetOptionGroupLocaleID(Setting.kBasicGroup), "Basic Settings Tab"  },
+                { m_Setting.GetOptionGroupLocaleID(Setting.kBasicGroup), "RENDER MASTERY"  },
 
                 // Button
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.Button)), "Reset settings" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.Button)), "This will reset Render Mastery's default settings." },
                 { m_Setting.GetOptionWarningLocaleID(nameof(Setting.Button)), "This will reset Render Mastery's default settings. Wish to proceed?" },
+
+                // Use Render Mastery
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.UseRenderMastery)), "Enable Render Mastery" },
+                { m_Setting.GetOptionDescLocaleID(nameof(Setting.UseRenderMastery)), "Enable or disable Render Mastery. Must enable this to utilize the rest of the functions." },
+
 
                 // AdaptiveDynamicResolutionScale
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.AdaptiveDynamicResolutionScale)), "Adaptive Dynamic Resolution Scale" },

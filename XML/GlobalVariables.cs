@@ -6,6 +6,8 @@ using System.Xml.Serialization;
 
 namespace ColorAdjustmentsMod.XML
 {
+   
+
     [Serializable]
     public class GlobalVariables
     {
@@ -75,9 +77,40 @@ namespace ColorAdjustmentsMod.XML
         [XmlElement]
         public float terrainMaxTrees { get; set; }
 
+        [XmlElement]
+        public bool UseRenderMastery { get; set; }
+
+        public static string SettingsPath()
+        {
+            // Construct the path to the settings directory
+            string localLowDirectory = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "..", "LocalLow");
+
+            string directoryPath = Path.Combine(
+                localLowDirectory,
+                "Colossal Order", "Cities Skylines II", "ModsData", "RenderMastery");
+
+            // Ensure the directory exists
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Construct the full path to the settings file
+            string settingsFilePath = Path.Combine(directoryPath, "RenderMastery.xml");
+
+            // Ensure the settings file exists
+            if (!File.Exists(settingsFilePath))
+            {
+                File.Create(settingsFilePath).Dispose(); // Create the file and immediately close it
+            }
+
+            // Return the full path to the settings file
+            return settingsFilePath;
+        }
 
 
-   
         public static void SaveToFile(string filePath)
         {
             try
@@ -114,6 +147,7 @@ namespace ColorAdjustmentsMod.XML
                     GlobalVariables loadedVariables = (GlobalVariables)serializer.Deserialize(reader);
 
                     // Set the loaded values to the corresponding properties.
+                    GlobalVariables.Instance.UseRenderMastery = loadedVariables.UseRenderMastery;
                     GlobalVariables.Instance.DynamicResScale = loadedVariables.DynamicResScale;
                     GlobalVariables.Instance.levelOfDetail = loadedVariables.levelOfDetail;
                     GlobalVariables.Instance.GlobalQualityLevel = loadedVariables.GlobalQualityLevel;
@@ -124,7 +158,6 @@ namespace ColorAdjustmentsMod.XML
                     GlobalVariables.Instance.ShadowNearPlaneOffset = loadedVariables.ShadowNearPlaneOffset;
                     GlobalVariables.Instance.RealtimeReflectionProbes = loadedVariables.RealtimeReflectionProbes;
                     GlobalVariables.Instance.BillboardsFaceCameraPosition = loadedVariables.BillboardsFaceCameraPosition;
-                    GlobalVariables.Instance.AntiAliasing = loadedVariables.AntiAliasing;
                     GlobalVariables.Instance.AsyncUploadTimeSlice = loadedVariables.AsyncUploadTimeSlice;
                     GlobalVariables.Instance.AsyncUploadBufferSize = loadedVariables.AsyncUploadBufferSize;
                     GlobalVariables.Instance.TerrainDetailDensityScale = loadedVariables.TerrainDetailDensityScale;
@@ -142,6 +175,7 @@ namespace ColorAdjustmentsMod.XML
 
 
 
+
                     return loadedVariables;
                 }
             }
@@ -152,6 +186,7 @@ namespace ColorAdjustmentsMod.XML
             }
         }
 
+   
 
         // Singleton pattern to ensure only one instance of GlobalVariables exists.
         private static GlobalVariables instance;
