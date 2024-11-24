@@ -40,8 +40,8 @@ namespace RenderMastery
         }
 
         [SettingsUISection(kBasicTab, kBasicGroup)]
-        [SettingsUIMultilineText("https://raw.githubusercontent.com/NyokoDev/LuminaCS2/refs/heads/master/HTTP/Lumina.svg")]
-        public string LuminaByNyoko => string.Empty;
+        [SettingsUIMultilineText("https://raw.githubusercontent.com/NyokoDev/RenderMastery/4356bcb31429aa7b4dd794f9fecac8c77fd8d593/Logo.png")]
+        public string RenderMasteryByNyoko => string.Empty;
 
         [SettingsUISection(kBasicTab, kBasicGroup)]
         public bool UseRenderMastery

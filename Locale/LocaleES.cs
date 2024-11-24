@@ -36,6 +36,7 @@ namespace RenderMastery.Locale
         {
             return new Dictionary<string, string>
             {
+                               { m_Setting.GetOptionLabelLocaleID(nameof(Setting.RenderMasteryByNyoko)), $"Render Mastery by Nyoko" },
                 { m_Setting.GetSettingsLocaleID(), "Render Mastery" },
                 { m_Setting.GetOptionTabLocaleID(Setting.kSection), "Render Mastery" },
                 { m_Setting.GetOptionTabLocaleID(Setting.kBasicTab), "Pestaña Básica" },
