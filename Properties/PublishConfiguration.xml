@@ -1,6 +1,6 @@
 ﻿<Publish>
 	<!--Id must be set in order to update existed mod. it is not required for publishing mod for the first time-->
-	<ModId Value="" />
+	<ModId Value="77104" />
 	<!--Name of the mod to display to players-->
 	<DisplayName Value="RenderMastery" />
 	<!--Short description of the mod-->
@@ -8,24 +8,59 @@
 	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 	<!--LongDescription Value="More render options." /-->
 	<LongDescription>
-More render options.
+		Render Mastery
+		Render Mastery is a powerful tool for enhancing your gaming experience, providing you with a wide range of settings to fine-tune your graphics and performance. Utilizing Colossal and Game.Rendering.Utilities, Render Mastery offers a comprehensive suite of options through Game.Settings and Game.UI.Widgets.
+
+		This mod replaces the older versions 'ReRenderingOptions', 'Dynamic Resolution Extended' plus 'Performance Squeezer' from third party modding sites.
+
+		Features
+		Advanced Settings Tab: Access advanced settings under the "Advanced" tab.
+		Basic Settings Tab: Explore basic settings under the "Basic Tab."
+		Graphics Settings
+		Adaptive Dynamic Resolution Scale: Adjust the adaptive dynamic resolution scale.
+		Level of Detail: Force-tune and switch the level of detail settings.
+		Global Quality Level: Adjust the global quality level of rendering.
+		Global Texture Mipmap Limit: Set the global texture mipmap limit.
+		Shadow Distance: Control the distance at which shadows are rendered.
+		Shadow Cascades: Adjust the number of shadow cascades.
+		Shadow Projection: Set the shadow projection mode.
+		Shadow Near Plane Offset: Adjust the shadow near plane offset.
+		Realtime Reflection Probes: Toggle realtime reflection probes.
+		Billboards Face Camera Position: Toggle billboards facing the camera position.
+		Anti-Aliasing: Adjust anti-aliasing settings. This feature is experimental and might conflict with other settings.
+		Async Upload Time Slice: Set the async upload time slice.
+		Async Upload Buffer Size: Set the async upload buffer size.
+		Terrain Detail Density Scale: Adjust the terrain detail density scale.
+		Terrain Pixel Error: Set the terrain pixel error.
+		Terrain Basemap Distance: Set the terrain basemap distance.
+		Terrain Detail Distance: Set the terrain detail distance.
+		Terrain Tree Distance: Set the terrain tree distance.
+		Terrain Billboard Start: Set the terrain billboard start.
+		Terrain Fade Length: Set the terrain fade length.
+		Terrain Max Trees: Terrain max trees. Also an experimental feature.
+		Troubleshooting
+		All settings are stored in \AppData\LocalLow\Colossal Order\Cities Skylines II\ModsData\RenderMastery.
+
+		The settings menu also includes a support button that links to my Discord server for immediate assistance. Additionally, there is a reset button that restores settings to their default values.
+
+		Enjoy!
 	</LongDescription>
 	<!--Thumbnail-->
-	<Thumbnail Value="Properties/Thumbnail.png" />
+	<Thumbnail Value="Properties/Logo.jpg" />
 	<!--Screenshot, can be set multiple times-->
-	<Screenshot Value="" />
+	<Screenshot Value="Properties/Logo.jpg" />
 	<!--Tag, can be set multiple times-->
 	<Tag Value="" />
 	<!--Link to the forum post where the mod can be discussed-->
 	<ForumLink Value="" />
 	<!--Version of the mod-->
-	<ModVersion Value="1.0" />
+	<ModVersion Value="1.0.1" />
 	<!--Recommended version of the base game to use the mod-->
 	<GameVersion Value="1.*" />
 	<!--Dependency for the mod, can be set multiple times-->
 	<Dependency Id="" />
 	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
-	<ChangeLog Value="" />
+	<ChangeLog Value="Stability update 1.0.1" />
 	<!--ChangeLog>
 	</ChangeLog-->
 	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
