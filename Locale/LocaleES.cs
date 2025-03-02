@@ -144,6 +144,9 @@ namespace RenderMastery.Locale
                 { m_Setting.GetEnumValueLocaleID(Setting.SomeEnum.Value1), "Valor 1" },
                 { m_Setting.GetEnumValueLocaleID(Setting.SomeEnum.Value2), "Valor 2" },
                 { m_Setting.GetEnumValueLocaleID(Setting.SomeEnum.Value3), "Valor 3" },
+
+                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ReloadSettings)), "Recargar ajustes" },
+                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ReloadSettings)), "Recarga los ajustes desde el archivo XML." },
             };
         }
 

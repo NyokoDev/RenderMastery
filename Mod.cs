@@ -26,6 +26,7 @@ namespace RenderMastery
             if (GameManager.instance.modManager.TryGetExecutableAsset(this, out var asset))
                 log.Info($"Current mod asset at {asset.path}");
 
+            LoadSettings();
             m_Setting = new Setting(this);
             m_Setting.RegisterInOptionsUI();
 
@@ -43,7 +44,19 @@ namespace RenderMastery
 
 
 
-//            AssetDatabase.global.LoadSettings(nameof(RenderMastery), m_Setting, new Setting(this));  Prevent settings from loading and override with our own.
+            //            AssetDatabase.global.LoadSettings(nameof(RenderMastery), m_Setting, new Setting(this));  Prevent settings from loading and override with our own.
+
+            // Ensure that the SettingsPath is not null or empty
+
+        }
+
+        private void LoadSettings()
+        {
+            if (string.IsNullOrEmpty(SettingsPath))
+            {
+                Mod.log.Info("Render Mastery: Initializing settings.");
+                SettingsPath = GlobalVariables.SettingsPath();
+            }
             GlobalVariables.LoadFromFile(SettingsPath);
         }
 

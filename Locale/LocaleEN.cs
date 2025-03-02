@@ -145,9 +145,8 @@ namespace RenderMastery.Locale
                { m_Setting.GetOptionDescLocaleID(nameof(Setting.Support)), "Opens the SkyLinx Discord server in your default browser. Join our server for direct assistance from our team and community. Get help with troubleshooting, share your ideas, and stay updated on the latest news and updates. Our support server is the best place to connect with other users and receive personalized assistance." },
 
                 // SomeEnum values
-                { m_Setting.GetEnumValueLocaleID(Setting.SomeEnum.Value1), "Value 1" },
-                { m_Setting.GetEnumValueLocaleID(Setting.SomeEnum.Value2), "Value 2" },
-                { m_Setting.GetEnumValueLocaleID(Setting.SomeEnum.Value3), "Value 3" },
+ { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ReloadSettings)), "Reload Settings" },
+                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ReloadSettings)), "Reloads the settings from RM XML file." },
             };
         }
 

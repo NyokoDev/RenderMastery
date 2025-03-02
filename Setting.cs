@@ -229,6 +229,19 @@ namespace RenderMastery
         [SettingsUISection(kSection, kButtonGroup)]
         public bool Button { set { SetFloatsAndIntsToOne(); ; } }
 
+        [SettingsUIConfirmation]
+        [SettingsUIButton]
+        [SettingsUISection(kSection, kButtonGroup)]
+        public bool ReloadSettings
+        {
+            set
+            {
+                // Call the LoadFromFile method with the SettingsPath
+                GlobalVariables.LoadFromFile(SettingsPath);
+            }
+        }
+
+
         [SettingsUIButton]
         [SettingsUISection(kSection, kButtonGroup)]
         public bool Support
@@ -240,13 +253,8 @@ namespace RenderMastery
         {
             // Discord server Path
             string discordPath = "https://discord.gg/5gZgRNm29e";
-
-      
-                // Start the Discord process
-                Process.Start(discordPath);
-            
-      
-        
+            // Start the Discord process
+            Process.Start(discordPath);
     }
 
     private void SetFloatsAndIntsToOne()

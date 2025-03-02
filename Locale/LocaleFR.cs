@@ -142,6 +142,10 @@ namespace RenderMastery.Locale
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.terrainMaxTrees)), "Maximum d'Arbres du Terrain" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.terrainMaxTrees)), "Maximum d'arbres du terrain. Aussi une fonctionnalité expérimentale." },
 
+
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ReloadSettings)), "Recharger les paramètres" },
+{ m_Setting.GetOptionDescLocaleID(nameof(Setting.ReloadSettings)), "Recharge les paramètres à partir du fichier XML de RM." },
+
                 // Valeurs de SomeEnum
                 { m_Setting.GetEnumValueLocaleID(Setting.SomeEnum.Value1), "Valeur 1" },
                 { m_Setting.GetEnumValueLocaleID(Setting.SomeEnum.Value2), "Valeur 2" },

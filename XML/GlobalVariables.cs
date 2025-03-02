@@ -61,7 +61,6 @@ namespace ColorAdjustmentsMod.XML
         [XmlElement]
         public float terrainBasemapDistance { get; set; }
 
-
         [XmlElement]
         public float terrainDetailDistance { get; set; }
 
@@ -103,7 +102,7 @@ namespace ColorAdjustmentsMod.XML
             // Ensure the settings file exists
             if (!File.Exists(settingsFilePath))
             {
-                File.Create(settingsFilePath).Dispose(); // Create the file and immediately close it
+                File.Create(settingsFilePath); // Create the file and immediately close it
             }
 
             // Return the full path to the settings file
@@ -125,11 +124,13 @@ namespace ColorAdjustmentsMod.XML
                     serializer.Serialize(writer, Instance);
                 }
 
+                // Log success message
+                Mod.log.Info($"Successfully saved Render Mastery GlobalVariables to file: {filePath}");
 
             }
             catch (Exception ex)
             {
-                Mod.log.Info($"Error saving Render Mastery GlobalVariables to file: {ex.Message}");
+                Mod.log.Error($"Error saving Render Mastery GlobalVariables to file: {ex.Message}");
             }
         }
 
@@ -140,53 +141,56 @@ namespace ColorAdjustmentsMod.XML
                 // Create an XmlSerializer for the GlobalVariables type.
                 XmlSerializer serializer = new XmlSerializer(typeof(GlobalVariables));
 
-                // Open the file for reading.
+                // Open the file and deserialize the object.
                 using (TextReader reader = new StreamReader(filePath))
                 {
-                    // Deserialize the object from the file.
                     GlobalVariables loadedVariables = (GlobalVariables)serializer.Deserialize(reader);
 
-                    // Set the loaded values to the corresponding properties.
-                    GlobalVariables.Instance.UseRenderMastery = loadedVariables.UseRenderMastery;
-                    GlobalVariables.Instance.DynamicResScale = loadedVariables.DynamicResScale;
-                    GlobalVariables.Instance.levelOfDetail = loadedVariables.levelOfDetail;
-                    GlobalVariables.Instance.GlobalQualityLevel = loadedVariables.GlobalQualityLevel;
-                    GlobalVariables.Instance.GlobalTextureMipmapLimit = loadedVariables.GlobalTextureMipmapLimit;
-                    GlobalVariables.Instance.ShadowDistance = loadedVariables.ShadowDistance;
-                    GlobalVariables.Instance.ShadowCascades = loadedVariables.ShadowCascades;
-                    GlobalVariables.Instance.ShadowProjection = loadedVariables.ShadowProjection;
-                    GlobalVariables.Instance.ShadowNearPlaneOffset = loadedVariables.ShadowNearPlaneOffset;
-                    GlobalVariables.Instance.RealtimeReflectionProbes = loadedVariables.RealtimeReflectionProbes;
-                    GlobalVariables.Instance.BillboardsFaceCameraPosition = loadedVariables.BillboardsFaceCameraPosition;
-                    GlobalVariables.Instance.AsyncUploadTimeSlice = loadedVariables.AsyncUploadTimeSlice;
-                    GlobalVariables.Instance.AsyncUploadBufferSize = loadedVariables.AsyncUploadBufferSize;
-                    GlobalVariables.Instance.TerrainDetailDensityScale = loadedVariables.TerrainDetailDensityScale;
-                    GlobalVariables.Instance.TerrainPixelError = loadedVariables.TerrainPixelError;
-                    GlobalVariables.Instance.terrainBasemapDistance = loadedVariables.terrainBasemapDistance;
-                    GlobalVariables.Instance.terrainDetailDistance = loadedVariables.terrainDetailDistance;
-                    GlobalVariables.Instance.terrainTreeDistance = loadedVariables.terrainTreeDistance;
-                    GlobalVariables.Instance.terrainBillboardStart = loadedVariables.terrainBillboardStart;
-                    GlobalVariables.Instance.terrainFadeLength = loadedVariables.terrainFadeLength;
-                    GlobalVariables.Instance.terrainMaxTrees = loadedVariables.terrainMaxTrees;
+                    // If GlobalVariables.Instance is not null, set the properties dynamically
+                    if (GlobalVariables.Instance != null)
+                    {
+                        // Get the type of GlobalVariables.Instance
+                        Type instanceType = GlobalVariables.Instance.GetType();
 
+                        // Get all public properties of the instance
+                        var properties = instanceType.GetProperties();
 
+                        foreach (var property in properties)
+                        {
+                            // Check if the property exists in the loadedVariables object
+                            var loadedProperty = loadedVariables.GetType().GetProperty(property.Name);
+                            if (loadedProperty != null && loadedProperty.CanRead)
+                            {
+                                // Get the value of the property from loadedVariables
+                                var value = loadedProperty.GetValue(loadedVariables);
 
+                                // Set the value to the corresponding property in GlobalVariables.Instance
+                                property.SetValue(GlobalVariables.Instance, value);
+                            }
+                        }
 
-
-
-
+                        // Log success message
+                        Mod.log.Info($"Successfully loaded Render Mastery settings from {filePath}");
+                    }
+                    else
+                    {
+                        Mod.log.Error("GlobalVariables.Instance is null. Settings not applied.");
+                        return null;
+                    }
 
                     return loadedVariables;
                 }
             }
             catch (Exception ex)
             {
-                Mod.log.Info("Failed to load RenderMastery settings. Ensure that at least one setting is set.");
+                Mod.log.Error($"Error loading Render Mastery settings: {ex.Message}");
                 return null;
             }
         }
 
-   
+
+
+
 
         // Singleton pattern to ensure only one instance of GlobalVariables exists.
         private static GlobalVariables instance;
